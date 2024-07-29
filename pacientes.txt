@@ -1,0 +1,7 @@
+Nombre: Antonio, Edad: 16, Enfermedad: sida
+Nombre: Samuel jeronimo, Edad: 16, Enfermedad: Gripe 
+Nombre: Juanito lopez, Edad: 50, Enfermedad: Cancer de mama
+Nombre: Chapo Guzman, Edad: 45, Enfermedad: Adicto a la coca
+Nombre: pablo escobar, Edad: 25, Enfermedad: enfermo mentalmente
+Nombre: carlos, Edad: 12, Enfermedad: VIH
+Nombre: marlon, Edad: 20, Enfermedad: sida
