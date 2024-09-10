@@ -1,4 +1,4 @@
-package personaMedico;
+package Hospital.model;
 
 public class Enfermera {
     private String nombre;

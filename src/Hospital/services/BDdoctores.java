@@ -1,6 +1,6 @@
-package data;
+package Hospital.services;
 
-import personaMedico.DoctorGeneral;
+import Hospital.model.DoctorGeneral;
 
 import java.util.ArrayList;
 

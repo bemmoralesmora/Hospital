@@ -1,4 +1,4 @@
-package personaMedico;
+package Hospital.model;
 
 import javax.swing.*;
 import java.awt.*;

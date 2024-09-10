@@ -1,6 +1,6 @@
-package data;
+package Hospital.services;
 
-import personaMedico.Enfermera;
+import Hospital.model.Enfermera;
 
 import java.util.ArrayList;
 
