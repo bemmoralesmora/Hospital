@@ -1,6 +1,6 @@
-package data;
+package Hospital.services;
 
-import pacientes.Pacientes;
+import Hospital.model.Pacientes;
 
 import java.util.ArrayList;
 

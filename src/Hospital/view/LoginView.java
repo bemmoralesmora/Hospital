@@ -1,12 +1,14 @@
-import personaMedico.DoctorGeneral;
-import data.BDdoctores;
+package Hospital.view;
+
+import Hospital.model.DoctorGeneral;
+import Hospital.services.BDdoctores;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Login extends JFrame {
+public class LoginView extends JFrame {
 
-    public Login(){
+    public LoginView(){
 
         // Configuración de la ventana principal
         this.setTitle("ROCKEMMA");
@@ -22,7 +24,7 @@ public class Login extends JFrame {
         // Panel para el banner
         JPanel logopanel = new JPanel(new GridBagLayout());
 
-        ImageIcon utlimg = new ImageIcon(getClass().getResource("img/logo2.png"));
+        ImageIcon utlimg = new ImageIcon(getClass().getResource("Hospital/resources/logo2.png"));
         JLabel img = new JLabel();
         img.setIcon(utlimg);
         logopanel.add(img);
