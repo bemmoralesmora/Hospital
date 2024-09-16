@@ -4,9 +4,17 @@ import Hospital.model.DoctorGeneral;
 import Hospital.services.BDdoctores;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class LoginView extends JFrame {
+
+    private JLabel correo;
+    private JTextField user;
+    private JLabel contrasenna;
+    private JPasswordField passsword;
+    private JButton botonInicio;
+
 
     public LoginView(){
 
@@ -35,32 +43,32 @@ public class LoginView extends JFrame {
         restricciones.gridy = 0;
         restricciones.insets = new Insets(5,10,5,10);
 
-        JLabel correo = new JLabel("correo");
+        correo = new JLabel("correo");
         restricciones.gridx = 0;
         restricciones.gridy = 2;
         correo.setFont(new Font("Arial", Font.PLAIN, 16));
         loginpanel.add(correo,restricciones); // Se añade la etiqueta al loginpanel
 
-        JTextField user = new JTextField();
+        user = new JTextField();
         user.setPreferredSize(new Dimension(200,30));
         restricciones.gridx= 1;
         restricciones.gridy= 2;
         loginpanel.add(user,restricciones);
 
 
-        JLabel contrasenna = new JLabel("contraseña");
+        contrasenna = new JLabel("contraseña");
         contrasenna.setFont(new Font("Arial", Font.PLAIN, 16));
         restricciones.gridx = 0;
         restricciones.gridy = 4;
         loginpanel.add(contrasenna,restricciones);
 
-        JTextField passsword = new JTextField();
+        passsword = new JPasswordField();
         passsword.setPreferredSize(new Dimension(200,30));
         restricciones.gridx= 1;
         restricciones.gridy= 4;
         loginpanel.add(passsword,restricciones);
 
-        JButton botonInicio = new JButton("iniciar");
+        botonInicio = new JButton("iniciar");
         restricciones.gridx=1;
         restricciones.gridy=5;
         botonInicio.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -70,30 +78,20 @@ public class LoginView extends JFrame {
 
         // direccion del boton
 
-        botonInicio.addActionListener(e -> {
-            ArrayList<DoctorGeneral> dataDoctores = BDdoctores.listaDoctores();
-            for (DoctorGeneral cadaDoctor : dataDoctores) {
-
-
-                if (cadaDoctor.getCorreo().equalsIgnoreCase(user.getText())) {
-                    if (cadaDoctor.getContraseña().equalsIgnoreCase(passsword.getText())) {
-                        DoctorGeneral a = new DoctorGeneral();
-                    }
-                } else {
-                    JLabel error = new JLabel("Error del correo");
-                    error.setForeground(Color.RED);
-                    loginpanel.add(error);
-                }
-            }
-
-            loginpanel.revalidate();
-            loginpanel.repaint();
-        });
-
-
         // Hacer visible la ventana
         this.setVisible(true);
     }
 
+    public String getCorreo (){
+        return user.getText();
+    }
+
+    public String getContrasenna (){
+        return new String(passsword.getPassword());
+    }
+
+    public void addLoginListener(ActionListener evento){
+        botonInicio.addActionListener(evento);
+    }
 }
     
