@@ -1,20 +1,28 @@
 package Hospital.controller;
 
 import Hospital.view.LoginView;
+import backEnde.BackEnde;  // Asegúrate de que este import es correcto
+
+import java.util.HashMap;
 
 public class LoginController {
     private LoginView Loginview;
+
     public LoginController(LoginView loginview){
         this.Loginview = loginview;
-        this.Loginview.addLoginListener(e -> controLogin());
+        this.Loginview.addLoginListener(e -> validarMisDatos());
     }
 
-    public void controLogin (){
-        System.out.println("Hola login");
-    }
 
-    public void validadDatos(){
-        String u = Loginview.getCorreo();
-        String p = Loginview.getContrasenna();
+    public void validarMisDatos(){
+
+        String correo = Loginview.getCorreo();
+        String contrasenna = Loginview.getContrasenna();
+
+        HashMap<String, String> resultado = BackEnde.validarDatos(correo, contrasenna);
+
+        for (String key : resultado.keySet()){
+            System.out.println(key + " :" + resultado.get(key));  // Cambiado a get(key)
+        }
     }
 }
