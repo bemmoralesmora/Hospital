@@ -2,11 +2,12 @@ package Hospital.view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
 
 public class DoctorView extends JFrame {
     private int[] pantalla = {1300, 800};
 
-    public DoctorView() {
+    public DoctorView(HashMap<String, String> doctorInfo) {
         this.setSize(pantalla[0], pantalla[1]);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Perfil del doctor");
@@ -40,8 +41,11 @@ public class DoctorView extends JFrame {
         restricciones.gridheight = 2;
         userPanel.add(logoPanel, restricciones);
 
+        String nombreDoctor = doctorInfo.get("nombre");
+        String especialidad = doctorInfo.get("especialidad");
+
         // Nombre del doctor
-        JLabel doctorNameLabel = new JLabel("Brian Morales");
+        JLabel doctorNameLabel = new JLabel(nombreDoctor);
         doctorNameLabel.setForeground(Color.WHITE);
         doctorNameLabel.setFont(new Font("Arial", Font.BOLD, 16));
         restricciones.gridx = 1;
@@ -50,7 +54,7 @@ public class DoctorView extends JFrame {
         userPanel.add(doctorNameLabel, restricciones);
 
         // Especialidad del doctor
-        JLabel doctorSpecialidad = new JLabel("Doctor General");
+        JLabel doctorSpecialidad = new JLabel(especialidad);
         doctorSpecialidad.setForeground(Color.LIGHT_GRAY);
         doctorSpecialidad.setFont(new Font("Arial", Font.PLAIN, 14));
         restricciones.gridx = 1;
@@ -64,5 +68,4 @@ public class DoctorView extends JFrame {
         // Hacer visible la ventana
         this.setVisible(true);
     }
-
 }

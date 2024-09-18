@@ -18,8 +18,8 @@ public class BackEnde {
             if (doctor.getCorreo().equals(usuario) && doctor.getContraseña().equals(contraseña)) {
 
                 // Si los datos coinciden, retornamos la información del usuario en el HashMap
-                resultado.put("Nombre", doctor.getNombre());
-                resultado.put("Especialidad", doctor.getCargo());
+                resultado.put("nombre", doctor.getNombre());
+                resultado.put("especialidad", doctor.getCargo());
                 resultado.put("Edad", String.valueOf(doctor.getEdad()));
                 resultado.put("NoLicencia", String.valueOf(doctor.getNoLicencia()));
                 resultado.put("Correo", doctor.getCorreo());
