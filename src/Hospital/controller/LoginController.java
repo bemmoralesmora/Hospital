@@ -1,9 +1,14 @@
 package Hospital.controller;
 
+import javax.swing.JOptionPane;
+import Hospital.model.Pacientes;
 import Hospital.view.DoctorView;
+import Hospital.services.BDpacientes;
+import Hospital.services.BDdoctores;
+import Hospital.model.DoctorGeneral;
 import Hospital.view.LoginView;
-import backEnde.BackEnde;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LoginController {
@@ -18,19 +23,23 @@ public class LoginController {
         String correo = loginView.getCorreo();
         String contrasenna = loginView.getContrasenna();
 
-        HashMap<String, String> resultado = BackEnde.validarDatos(correo, contrasenna);
+        ArrayList<DoctorGeneral> doctores = BDdoctores.listaDoctores();
 
-        if (resultado.containsKey("error")) {
-            System.out.println("error: " + resultado.get("error")); // Muestra el mensaje de error
-        } else {
-            String nombreDoctor = resultado.get("nombre");
-            String especialidad = resultado.get("especialidad"); // Corrección aquí
+        for (DoctorGeneral doctor : doctores) {
+            if (doctor.getCorreo().equals(correo) && doctor.getContraseña().equals(contrasenna)) {
+                HashMap<String, String> doctorInfo = new HashMap<>();
+                doctorInfo.put("nombre", doctor.getNombre());
+                doctorInfo.put("especialidad", doctor.getCargo());
 
-            HashMap<String, String> doctorInfo = new HashMap<>();
-            doctorInfo.put("nombre", nombreDoctor);
-            doctorInfo.put("especialidad", especialidad);
-
-            new DoctorView(doctorInfo);
+                ArrayList<Pacientes> listaPacientes = BDpacientes.listapacientes();
+                new DoctorView(doctorInfo, listaPacientes);
+                loginView.dispose();
+                return;
+            }
         }
+
+        // Si llegamos aquí, las credenciales son incorrectas
+        System.err.println("Error de inicio de sesión: Credenciales incorrectas");
+        JOptionPane.showMessageDialog(loginView, "Credenciales incorrectas. Inténtalo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
     }
 }

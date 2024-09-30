@@ -2,45 +2,45 @@ package Hospital.model;
 
 public class Pacientes {
 
-        private String nombre;
-        private int identificacion;
-        private String fechaNacimiento;
-        private int edad;
-        private String genero;
-        private String direccion;
-        private int numeroContacto;
-        private String correo;
-        private String historialMedico;
-        private String grupoSanguineo;
-        private String nombreContactoEmergencia;
-        private int numeroContactoEmergencia;
-        private String seguroMedico;
+    private String nombre;
+    private String correo;
+    private int telefono;
+    private String direccion;
+    private String fechaNacimiento;
+    private int edad;
+    private int horarioCita;
+    private String motivoCita;
+    private int numeroConsulta;
+    private String doctor;
 
-        public Pacientes(String nombre, int identificacion, String fechaNacimiento, int edad, String genero, String direccion, int numeroContacto, String correo, String historialMedico, String grupoSanguineo, String nombreContactoEmergencia, int numeroContactoEmergencia, String seguroMedico) {
-            this.nombre = nombre;
-            this.identificacion = identificacion;
-            this.fechaNacimiento = fechaNacimiento;
-            this.edad = edad;
-            this.genero = genero;
-            this.direccion = direccion;
-            this.numeroContacto = numeroContacto;
-            this.correo = correo;
-            this.historialMedico = historialMedico;
-            this.grupoSanguineo = grupoSanguineo;
-            this.nombreContactoEmergencia = nombreContactoEmergencia;
-            this.numeroContactoEmergencia = numeroContactoEmergencia;
-            this.seguroMedico = seguroMedico;
-        }
+    public Pacientes(String nombre, String correo, int telefono, String direccion, String fechaNacimiento, int edad, int horarioCita, String motivoCita, int numeroConsulta, String doctor) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.fechaNacimiento = fechaNacimiento;
+        this.edad = edad;
+        this.horarioCita = horarioCita;
+        this.motivoCita = motivoCita;
+        this.numeroConsulta = numeroConsulta;
+        this.doctor = doctor;
+    }
 
-        // METODOS GET
-
-
+    // Métodos GET
     public String getNombre() {
         return nombre;
     }
 
-    public int getIdentificacion() {
-        return identificacion;
+    public String getCorreo() {
+        return correo;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public String getDireccion() {
+        return direccion;
     }
 
     public String getFechaNacimiento() {
@@ -51,51 +51,37 @@ public class Pacientes {
         return edad;
     }
 
-    public String getGenero() {
-        return genero;
+    public int getHorarioCita() {
+        return horarioCita;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getMotivoCita() {
+        return motivoCita;
     }
 
-    public String getCorreo() {
-        return correo;
+    public int getNumeroConsulta() {
+        return numeroConsulta;
     }
 
-    public String getHistorialMedico() {
-        return historialMedico;
+    public String getDoctor() {
+        return doctor;
     }
 
-    public int getNumeroContacto() {
-        return numeroContacto;
-    }
-
-    public String getGrupoSanguineo() {
-        return grupoSanguineo;
-    }
-
-    public String getNombreContactoEmergencia() {
-        return nombreContactoEmergencia;
-    }
-
-    public int getNumeroContactoEmergencia() {
-        return numeroContactoEmergencia;
-    }
-
-    public String getSeguroMedico() {
-        return seguroMedico;
-    }
-
-    // METODOS DET
-
-
+    // Métodos SET
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public void setIdentificacion(int identificacion) {
-        this.identificacion = identificacion;
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public void setFechaNacimiento(String fechaNacimiento) {
@@ -106,40 +92,35 @@ public class Pacientes {
         this.edad = edad;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setHorarioCita(int horarioCita) {
+        this.horarioCita = horarioCita;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setMotivoCita(String motivoCita) {
+        this.motivoCita = motivoCita;
     }
 
-    public void setNumeroContacto(int numeroContacto) {
-        this.numeroContacto = numeroContacto;
+    public void setNumeroConsulta(int numeroConsulta) {
+        this.numeroConsulta = numeroConsulta;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setDoctor(String doctor) {
+        this.doctor = doctor;
     }
 
-    public void setHistorialMedico(String historialMedico) {
-        this.historialMedico = historialMedico;
-    }
-
-    public void setGrupoSanguineo(String grupoSanguineo) {
-        this.grupoSanguineo = grupoSanguineo;
-    }
-
-    public void setNombreContactoEmergencia(String nombreContactoEmergencia) {
-        this.nombreContactoEmergencia = nombreContactoEmergencia;
-    }
-
-    public void setNumeroContactoEmergencia(int numeroContactoEmergencia) {
-        this.numeroContactoEmergencia = numeroContactoEmergencia;
-    }
-
-    public void setSeguroMedico(String seguroMedico) {
-        this.seguroMedico = seguroMedico;
+    @Override
+    public String toString() {
+        return "Paciente{" +
+                "nombre='" + nombre + '\'' +
+                ", correo='" + correo + '\'' +
+                ", telefono=" + telefono +
+                ", direccion='" + direccion + '\'' +
+                ", fechaNacimiento='" + fechaNacimiento + '\'' +
+                ", edad=" + edad +
+                ", horarioCita=" + horarioCita +
+                ", motivoCita='" + motivoCita + '\'' +
+                ", numeroConsulta=" + numeroConsulta +
+                ", doctor='" + doctor + '\'' +
+                '}';
     }
 }
-
