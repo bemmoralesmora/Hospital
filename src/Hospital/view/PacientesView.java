@@ -11,7 +11,7 @@ public class PacientesView extends JPanel {
     public PacientesView(ArrayList<Pacientes> listaPacientes) {
         this.listaPacientes = listaPacientes;
         setLayout(new BorderLayout());
-        add(panelPaciente(), BorderLayout.CENTER);
+            add(panelPaciente(), BorderLayout.CENTER);
     }
 
     // Método para crear el panel de pacientes sin recibir parámetros

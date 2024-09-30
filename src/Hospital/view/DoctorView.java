@@ -97,11 +97,11 @@ public class DoctorView extends JFrame {
         gbc.gridy = 0;
         gbc.insets = new Insets(5, 5, 5, 5);
 
-        menu.add(boton("btn1"), gbc);
-        menu.add(boton("btn2"), gbc);
-        menu.add(boton("btn3"), gbc);
-        menu.add(boton("btn4"), gbc);
-        menu.add(boton("btn5"), gbc);
+        menu.add(boton("Consultas Del Día"), gbc);
+        menu.add(boton("Salas"), gbc);
+        menu.add(boton("Farmacia"), gbc);
+        menu.add(boton("Pacientes registrados"), gbc);
+        menu.add(boton("Citar en otra area"), gbc);
 
         menuPanel.add(menu, gbc);
         return menuPanel;
