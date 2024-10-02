@@ -14,7 +14,6 @@ public class PacientesView extends JPanel {
             add(panelPaciente(), BorderLayout.CENTER);
     }
 
-    // Método para crear el panel de pacientes sin recibir parámetros
     private JPanel panelPaciente() {
         JPanel panel = new JPanel();
         panel.setBackground(Color.DARK_GRAY);
