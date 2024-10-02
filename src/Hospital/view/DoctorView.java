@@ -2,7 +2,9 @@ package Hospital.view;
 
 import Hospital.model.Pacientes;
 import Hospital.model.Salas;
+import Hospital.model.Medicamentos; // Importa la clase Medicamentos
 import Hospital.services.BDsalas;
+import Hospital.services.BDfarmacia; // Asegúrate de tener esta clase para obtener la lista de medicamentos
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,13 +15,14 @@ public class DoctorView extends JFrame {
     private int[] pantalla = {1300, 800};
 
     private ArrayList<Pacientes> listaDePacientes;
+    private ArrayList<Medicamentos> listaDeMedicamentos; // Lista de medicamentos
     private JPanel pacientesPanel;
     private JPanel salasPanel;
     private JPanel consultasPanel;
 
     public DoctorView(HashMap<String, String> doctorInfo, ArrayList<Pacientes> Listapacientes) {
-
         this.listaDePacientes = Listapacientes;
+        this.listaDeMedicamentos = BDfarmacia.listaMedicamentos(); // Inicializa la lista de medicamentos
         this.setSize(pantalla[0], pantalla[1]);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Perfil del Doctor");
@@ -104,7 +107,7 @@ public class DoctorView extends JFrame {
         menuPanel.setBackground(Color.DARK_GRAY);
 
         JPanel menu = new JPanel();
-        menu.setLayout(new GridLayout(5, 1));
+        menu.setLayout(new GridLayout(6, 1)); // Cambiado a 6 filas para agregar un botón más
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -119,12 +122,16 @@ public class DoctorView extends JFrame {
         JButton botonConsultas = boton("Consultas Del Día");
         botonConsultas.addActionListener(e -> mostrarElPanelConsultas());
 
+        // Botón para mostrar el panel de Farmacia
+        JButton botonFarmacia = boton("Farmacia");
+        botonFarmacia.addActionListener(e -> mostrarElPanelFarmacia());
+
         // Agregar botones al menú
         menu.add(botonConsultas, gbc);
         menu.add(botonSalas, gbc);
-        menu.add(boton("Farmacia"), gbc);
+        menu.add(botonFarmacia, gbc); // Agregar el botón de farmacia
         menu.add(boton("Pacientes registrados"), gbc);
-        menu.add(boton("Citar en otra area"), gbc);
+        menu.add(boton("Citar en otra área"), gbc);
 
         menuPanel.add(menu, gbc);
         return menuPanel;
@@ -152,10 +159,18 @@ public class DoctorView extends JFrame {
     private void mostrarElPanelConsultas() {
         pacientesPanel.setVisible(false);
         salasPanel.setVisible(false);
-        if (consultasPanel.getParent() == null) {
-            add(consultasPanel, BorderLayout.CENTER);
-        }
-        consultasPanel.setVisible(true);
+        consultasPanel.setVisible(true); // Muestra el panel de consultas
+        add(consultasPanel, BorderLayout.CENTER);
+        revalidate();
+        repaint();
+    }
+
+    private void mostrarElPanelFarmacia() {
+        pacientesPanel.setVisible(false);
+        salasPanel.setVisible(false);
+        consultasPanel.setVisible(false); // Ocultar el panel de consultas
+        FarmaciasView farmaciaView = new FarmaciasView(listaDeMedicamentos); // Pasar la lista de medicamentos
+        add(farmaciaView, BorderLayout.CENTER);
         revalidate();
         repaint();
     }
