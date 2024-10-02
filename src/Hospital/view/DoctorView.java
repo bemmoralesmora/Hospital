@@ -15,6 +15,7 @@ public class DoctorView extends JFrame {
     private ArrayList<Pacientes> listaDePacientes;
     private JPanel pacientesPanel;
     private JPanel salasPanel;
+    private JPanel consultasPanel;
 
     public DoctorView(HashMap<String, String> doctorInfo, ArrayList<Pacientes> Listapacientes) {
 
@@ -77,16 +78,18 @@ public class DoctorView extends JFrame {
         add(headerPanel, BorderLayout.NORTH);
 
         // Crear el panel de pacientes
-
         PacientesView pacientesView = new PacientesView(Listapacientes);
         pacientesPanel = new JPanel(new BorderLayout());
         pacientesPanel.add(pacientesView, BorderLayout.CENTER);
 
         // Crear el panel de salas
-
         ArrayList<Salas> listaSalas = BDsalas.listaSalas();
         salasPanel = new SalaView(listaSalas);
         salasPanel.setVisible(false);
+
+        // Crear el panel de consultas utilizando PacientesView
+        consultasPanel = new PacientesView(Listapacientes); // Muestra los pacientes del día
+        consultasPanel.setVisible(false); // Por defecto, no visible
 
         add(ComponenteteMenuLateral(), BorderLayout.WEST);
         add(pacientesPanel, BorderLayout.CENTER);
@@ -110,11 +113,15 @@ public class DoctorView extends JFrame {
 
         // Botón para mostrar el panel de salas
         JButton botonSalas = boton("Salas");
-        botonSalas.addActionListener(e -> mostrarElPanelSalas()); // Acción del botón
+        botonSalas.addActionListener(e -> mostrarElPanelSalas());
+
+        // Botón para mostrar el panel de Consultas Del Día
+        JButton botonConsultas = boton("Consultas Del Día");
+        botonConsultas.addActionListener(e -> mostrarElPanelConsultas());
 
         // Agregar botones al menú
+        menu.add(botonConsultas, gbc);
         menu.add(botonSalas, gbc);
-        menu.add(boton("Consultas Del Día"), gbc);
         menu.add(boton("Farmacia"), gbc);
         menu.add(boton("Pacientes registrados"), gbc);
         menu.add(boton("Citar en otra area"), gbc);
@@ -133,11 +140,22 @@ public class DoctorView extends JFrame {
 
     private void mostrarElPanelSalas() {
         pacientesPanel.setVisible(false);
-        // Verifica si el panel de salas no ha sido agregado al contenedor principal
+        consultasPanel.setVisible(false); // Ocultar el panel de consultas
         if (salasPanel.getParent() == null) {
             add(salasPanel, BorderLayout.CENTER);
         }
         salasPanel.setVisible(true);
+        revalidate();
+        repaint();
+    }
+
+    private void mostrarElPanelConsultas() {
+        pacientesPanel.setVisible(false);
+        salasPanel.setVisible(false);
+        if (consultasPanel.getParent() == null) {
+            add(consultasPanel, BorderLayout.CENTER);
+        }
+        consultasPanel.setVisible(true);
         revalidate();
         repaint();
     }
