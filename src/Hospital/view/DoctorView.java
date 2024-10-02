@@ -159,8 +159,11 @@ public class DoctorView extends JFrame {
     private void mostrarElPanelConsultas() {
         pacientesPanel.setVisible(false);
         salasPanel.setVisible(false);
-        consultasPanel.setVisible(true); // Muestra el panel de consultas
-        add(consultasPanel, BorderLayout.CENTER);
+        // Asegúrate de que el panel de consultas esté agregado al JFrame
+        if (consultasPanel.getParent() == null) {
+            add(consultasPanel, BorderLayout.CENTER);
+        }
+        consultasPanel.setVisible(true); // Hacer visible el panel de consultas
         revalidate();
         repaint();
     }
